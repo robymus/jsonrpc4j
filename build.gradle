@@ -16,8 +16,8 @@ plugins {
 }
 
 description = 'This project aims to provide the facility to easily implement JSON-RPC for the java programming language.'
-version = '1.4.2'
-group = 'com.github.briandilley.jsonrpc4j'
+version = '1.4.2-public-client'
+group = 'com.apn2'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
@@ -138,33 +138,13 @@ publishing {
             }
         }
     }
-}
-
-bintray {
-    user = project.hasProperty('user') ? project.property('user') : 'not_set'
-    key = project.hasProperty('key') ? project.property('key') : 'not_set'
-    dryRun = false
-    publish = true
-    pkg {
-        repo = 'maven'
-        name = 'com.github.briandilley.jsonrpc4j:jsonrpc4j'
-        desc = project.description
-        licenses = ['MIT']
-        publications = ['release']
-        websiteUrl = 'https://briandilley.github.io/jsonrpc4j'
-        issueTrackerUrl = 'https://github.com/briandilley/jsonrpc4j/issues'
-        vcsUrl = 'git@github.com:briandilley/jsonrpc4j.git'
-        githubRepo = 'briandilley/jsonrpc'
-        githubReleaseNotesFile = 'README.md'
-        labels = ['json', 'rpc', 'java']
-        publicDownloadNumbers = true
-        version {
-            gpg {
-                sign = true
+    repositories {
+        maven {
+            credentials {
+                username 'dev'
+                password 'devel-vedel'
             }
-            name = project.version
-            vcsTag = project.version
-            released = new Date()
+            url 'https://nexus.apn2.com/nexus/content/repositories/pub-releases'
         }
     }
 }
